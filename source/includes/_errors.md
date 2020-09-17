@@ -1,22 +1,20 @@
 # Errors
 
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-The Kittn API uses the following error codes:
+The Digitex Futures API uses the following error codes:
 
 
-Error Code | Meaning
----------- | -------
-400 | Bad Request -- Your request is invalid.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+Error Code | Description
+---------- | -----------
+3001 | Bad Request (invalid parameters, etc.).
+3002 | Channel not found.
+3003 | Contract not found.
+3004 | Index not found.
+3005 | Kline interval not specified.
+3006 | Kline interval not found.
+3007 | Orderbook depth not specified.
+3008 | Invalid orderbook depth.
+3009 | Already subscribed for the topic.
+3010 | Not subscribed for the topic.
+3011 | Feature is not implemented yet.
+3012 | Other error.
+4001 | System maintenance.
