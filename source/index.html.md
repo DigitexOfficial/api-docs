@@ -5,6 +5,7 @@ language_tabs:
   - javascript
 
 toc_footers:
+  - <a href='https://digitexfutures.com/'>Go to Digitex Futures</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -21,8 +22,6 @@ Welcome to the Digitex Futures API!
 
 You can use our API to get the market data and manage your orders on Digitex Futures Exchange.
 
-All timestamps are provided in milliseconds until other noted. 
-
 # REST API
 
 ## Overview
@@ -33,18 +32,20 @@ Please, use the following URLs to send requests.
 
 **Mainnet**: `https://rest.mapi.digitexfutures.com`.
 
-## Message format
+## Response format
 
 Every response message is a JSON-object with the following fields.
 
 Name | Type | Description
 ---- | ---- | -----------
 status | string | valid values are `ok` and `error`
-data | object or array | result data
-code | integer | optional, is set to an error code if `status` is `error`
-msg | string | optional, human readable error description if `status` is `error` 
+data | object or array | response payload
+code | integer | optional; is set to an error code if `status` is `error`
+msg | string | optional; human readable error description if `status` is `error` 
 
-> Example of a successfull response:
+All timestamps are provided in milliseconds until other noted. 
+
+> An example of a successfull response:
 
 ```javascript
 {
@@ -53,7 +54,7 @@ msg | string | optional, human readable error description if `status` is `error`
 }
 ```
 
-> Example of an error response:
+> An example of an error response:
 
 ```javascript
 {
@@ -81,13 +82,13 @@ Use it to test if Digitex Futures API is reachable.
 
 *The response object has no fields*
 
-> Example of a response to 'public/ping':
+> An example of a response from 'public/ping':
 
 ```javascript
 {}
 ```
 
-## Public - Anoouncement
+## Public - Announcement
 
 Get the latest public announcements.
 
@@ -108,10 +109,10 @@ link | string | link to a full announcement
 title | string | announcement's title
 content | string | detailed description
 date | string | date and time of the announcement
-tags | list of strings | arbitrary set of string tags
+tags | list of strings | arbitrary set of tags
 urgent | bool | whether this announcement is urgent or not
 
-> Example of a response to 'public/announcement':
+> An example of a response from 'public/announcement':
 
 ```javascript
 {
@@ -156,10 +157,10 @@ Get the current date and time.
 
 Name | Type | Description
 ---- | ---- | -----------
-iso | string | current UTC time formatted with ISO 8601 with milliseconds  
-timestamp | integer | current UTC timestamp with milliseconds
+iso | string | current UTC time (ISO 8601 with milliseconds)  
+timestamp | integer | current UTC timestamp in milliseconds
 
-> Example of a response to 'public/time':
+> An example of a response from 'public/time':
 
 ```javascript
 {
@@ -219,7 +220,7 @@ settleTime | integer | contract's settlement timestamp
 makerFee | float | maker's fee value
 takerFee | float | taker's fee value
 settlementFee | float | settlement fee value
-insuranceFee | float | isurance fee value
+insuranceFee | float | insurance fee value
 minPrice | float | minimum price of the contract
 maxPrice | float | maximum price of the contract
 minOrderSize | float | minimum order size
@@ -227,7 +228,7 @@ maxOrderSize | float | maximum order size
 tickSize | float | contract's tick size in quoted currency
 tickValue | float | contract's tick value in base currency
 
-> Example of a response to 'public/contracts':
+> An example of a response from 'public/contracts':
 
 ```javascript
 {
@@ -348,7 +349,7 @@ withdrawFee | float | withdrawal fee value
 minDepositSize | float | minimum deposit size
 maxDepositSize | float| minimum withdrawal size
 
-> Example of a response to 'public/assets'
+> An example of a response from 'public/assets':
 
 ```javascript
 {
@@ -448,7 +449,7 @@ updated | integer | timestamp of the update
 bids | list of pairs [price, amount] | orderbook bids
 asks | list of pairs [price, amount] | orderbook asks
 
-> Example of a response to 'public/orderbook':
+> An example of a response from 'public/orderbook':
 
 ```javascript
 {
@@ -492,7 +493,7 @@ Get the overview of a current state of all available markets and 24-hour stats.
 Name | Type | Description
 ---- | ---- | -----------
 symbol | string | contract's symbol
-openTime | integer | start timestamp of 24h-intervel
+openTime | integer | start timestamp of a 24h-interval
 closeTime | integer | end timestamp of the interval
 openPx | float | price value at the beginning of the interval
 highPx | float | the highest price during the interval
@@ -515,7 +516,7 @@ openInterestUsd | float | open interest value in USD
 dgtxUsdRate | float | current DGTX/USD rate
 insuranceFund | float | insurance fund value
 
-> Example of a response to 'public/markets':
+> An example of a response from 'public/markets':
 
 ```javascript
 {
@@ -579,7 +580,7 @@ insuranceFund | float | insurance fund value
 
 ## Public - Trades
 
-Get the latest contract trades.
+Get the latest contract's trades.
 
 **Request**
 
@@ -602,7 +603,7 @@ px | float | trade price
 qty | float | trade quantity
 side | string |  trade side
 
-> Example of a response to 'public/trades':
+> An example of a response from 'public/trades':
 
 ```javascript
 {
@@ -635,7 +636,7 @@ Name | Type | Description
 ---- | ---- | -----------
 symbol | string | contract's symbol
 count | integer | desired number of klines; default: 60, max: 1500
-interval | string | kline interval; default: 1min;
+interval | string | kline's interval; default: 1min;
 from | integer | start timestamp of the interval
 to | integer | end timestamp of the interval
 
@@ -646,15 +647,15 @@ to | integer | end timestamp of the interval
 Name | Type | Description
 ---- | ---- | -----------
 symbol | string | contract's symbol
-interval | string | kline interval
-id | integer | kline ID
+interval | string | kline's interval
+id | integer | kline's ID
 o | float | open price
 h | float | highest price
 l | float | lowest price
 c | float | close price
 v | float | total volume
 
-> Example of a response to 'public/klines':
+> An example of a response from 'public/klines':
 
 ```javascript
 {
@@ -706,7 +707,7 @@ symbol | string | symbol of the index
 Name | Type | Description
 ---- | ---- | -----------
 indexSymbol | string | symbol of the index (e.g. `.DGTXBTCUSD`)
-contracts | list of strings | list of contracts that hava this index as underlying index
+contracts | list of strings | list of contracts that have this index as underlying index
 updated | integer | latest update timestamp
 markPx | float | current mark price value
 fairPx | float | current fair price value
@@ -717,7 +718,7 @@ ts | integer | timestamp of the last update
 px | float | last trade value
 vol | float | last trade volume
 
-> Example of a response to 'public/index':
+> An example of a response from 'public/index':
 
 ```javascript
 {
@@ -775,7 +776,7 @@ qty | float | liquidated position quantity
 px | float | liquidated position price
 type | string | liquidated position type (`LONG` or `SHORT`)
 
-> Example of a response to 'public/liquidations':
+> An example of a response from 'public/liquidations':
 
 ```javascript
 {
@@ -795,11 +796,11 @@ type | string | liquidated position type (`LONG` or `SHORT`)
 }
 ```
 
-# Websocket API
+# Websockets API
 
 ## Overview
 
-Use the following URLs to connect to Digitex Futures websocket API:
+Use the following URLs to connect to Digitex Futures websockets API:
 
 *Testnet*: `wss://ws.tapi.digitexfutures.com`.
 
@@ -808,6 +809,8 @@ Use the following URLs to connect to Digitex Futures websocket API:
 Server send message `ping` every 30 seconds. Client should respond with message `pong` or it would be disconnected. 
 
 ## Message format
+
+**Request**
 
 Each request is a JSON-object with the following structure:
 
@@ -819,16 +822,18 @@ params | list of strings | request method parameters
 
 The field `id` is used in JSON as an identifier of the request. The response for the particular request has the same `id` value.
 
+**Response**
+
 Every response is a JSON-object with the following fields:
 
 Name | Type | Description
 ---- | ---- | -----------
 status | string | valid values are `ok` and `error`
-result | object or array | result data
-code | integer | optional, is set to an error code if `status` is `error`
-msg | string | optional, human readable error description if `status` is `error` 
+result | object or array | response payload
+code | integer | optional; is set to an error code if `status` is `error`
+msg | string | optional; human readable error description if `status` is `error` 
 
-> Example of a successfull response:
+> An example of a successfull response:
 
 ```javascript
 {
@@ -837,7 +842,7 @@ msg | string | optional, human readable error description if `status` is `error`
 }
 ```
 
-> Example of an error response:
+> An example of an error response:
 
 ```javascript
 {
@@ -850,7 +855,7 @@ msg | string | optional, human readable error description if `status` is `error`
 
 ## Public channels
 
-Channel name looks as the following: `BTCUSD-PERP@orderbook_25`.
+Channel name has the following format: `BTCUSD-PERP@orderbook_25`.
 
 Full list of public channels:
 
@@ -875,11 +880,11 @@ Subscribe for a particular channel.
 **Request**
 
 Field | Value
------ | ----- |
+----- | -----
 method | `subscribe`
 params | one or more channels
 
-> Example of the subscription request:
+> An example of the subscribe request:
 
 ```javascript
 {
@@ -898,11 +903,11 @@ Unsubscribe from a particular channel.
 **Request**
 
 Field | Value
------ | ----- |
+----- | -----
 method | `unsubscribe`
 params | one or more channels
 
-> Example of the subscription request:
+> An example of the unsubscribe request:
 
 ```javascript
 {
@@ -921,11 +926,19 @@ Get the list of active subscriptions.
 **Request**
 
 Field | Value
------ | ----- |
+----- | ----- 
 method | `subscriptions`
 params | empty; can be omitted
 
-> Example of the subscription request:
+**Response**
+
+Name | Type | Description
+---- | ---- | -----------
+id | integer | request's ID
+status | string | indicates success or failure
+result | array of strings | list of trader's active subscriptions
+
+> An example of a response with subscription list:
 
 ```javascript
 {
@@ -940,18 +953,18 @@ params | empty; can be omitted
 
 ## Published messages
 
-Each published message is a JSON-object with the following fields:
+Each published by the exchange message is a JSON-object with the following fields:
 
 Name | Type | Description
 ---- | ---- | -----------
-ch | string | full channel name
+ch | string | full channel name (e.g. `BTCUSD-PERP@trades`)
 data | object | channel-specific payload
 
 ## Public - Orderbook channel
 
 Realtime stream of contract's orderbook.
 
-**Channel name:** `<symbol>@orderbook_X` (put allowed depth instead of X).
+**Channel name:** `<symbol>@orderbook_X` (put allowed depth instead of `X`).
 
 Possible values of orderbook depth have been described earlier.
 
@@ -966,7 +979,7 @@ ts | integer | last update timestamp
 bids | list of pairs [price, quantity] | current bids
 asks | list of pairs [price, quantity] | current asks
 
-> Example of orderbook message:
+> An example of an `orderbook` message:
 
 ```javascript
 {
@@ -997,11 +1010,12 @@ The payload has the following fields:
 Name | Type | Description
 ---- | ---- | -----------
 symbol | string | contract's symbol
+trades | array of objects | list of trades
 ts | integer | trade's timestamp
 px | float | trade's price
 qty | float | trade's quantity
 
-> Example of trades message:
+> An example of a `trades` message:
 
 ```javascript
 {
@@ -1018,8 +1032,7 @@ qty | float | trade's quantity
 
 ## Public - Kline channel
 
-Realtime stream of contract's candles.
-Klines are published every minute.
+Realtime stream of contract's candles. Klines are published every minute.
 
 **Channel name:** `<symbol>@kline_1min`
 
@@ -1038,7 +1051,7 @@ l | float | lowest price
 c | float | close price
 v | float | total trade volume
 
-> Example of kline message:
+> An example of a `kline` message:
 
 ```javascript
 {
@@ -1067,12 +1080,13 @@ Realtime stream of liquidated positions of the contract.
 Name | Type | Description
 ---- | ---- | -----------
 symbol | string | contract's symbol
+positions | array of objects | list of liquidated positions
 ts | integer | liquidation's timestamp
 qty | float | liquidated position size
 px | float | liquidation price
 type | string | liquidated position type (`LONG` or `SHORT`)
 
-> Example of liquidations message:
+> An example of a `liquidations` message:
 
 ```javascript
 {
@@ -1097,7 +1111,7 @@ Realtime updates of contract's stats.
 Name | Type | Description
 ---- | ---- | -----------
 symbol | string | contract's symbol
-openTime | integer | start timestamp of 24h-intervel
+openTime | integer | start timestamp of a 24h-interval
 closeTime | integer | end timestamp of the interval
 openPx | float | price value at the beginning of the interval
 highPx | float | the highest price during the interval
@@ -1126,7 +1140,7 @@ insuranceFund | float | insurance fund value
 - `TICK_SIZE`=5 and `TICK_VALUE`=0.1 for `BTCUSD-PERP` contract;
 - `TICK_SIZE`=0.25 and `TICK_VALUE`=0.25 for `ETHUSD-PERP` contract.
 
-> Example of ticker message:
+> An example of `ticker` message:
 
 ```javascript
 {
@@ -1172,7 +1186,7 @@ symbol | string | contract's symbol
 ts | integer | funding info update timestamp
 rate | float | current funding rate value
 
-> Example of fundingInfo message:
+> An example of `fundingInfo` message:
 
 ```javascript
 {
@@ -1208,7 +1222,7 @@ ts | component's price updated timestamp
 px | float | last trade value
 vol | float | last trade volume
 
-> Example of index message:
+> An example of `index` message:
 
 ```javascript
 {
@@ -1233,23 +1247,25 @@ vol | float | last trade volume
 
 In case of a general error the `error` message will be sent by the server.
 
-> Example of an error message:
+> An example of an `error` message:
 
 ```javascript
 {
     "ch":"error",
     "data":{
-        "code":error_code,
-        "msg":"error message"
+        "code":1,
+        "msg":"error description"
     }
 }
 ```
 
 ## Private - Trading
 
+Private methods of the API allow to manage orders and position.
+
 **General**
 
-Possible value of order's `status`:  `PENDING`, `ACCEPTED`, `REJECTED`, `CANCELLED`, `FILLED`, `PARTIALLY_FILLED`, `TERMINATED`, `EXPIRED`, `TRIGGERED`.
+Possible values of order's `status`:  `PENDING`, `ACCEPTED`, `REJECTED`, `CANCELLED`, `FILLED`, `PARTIALLY_FILLED`, `TERMINATED`, `EXPIRED`, `TRIGGERED`.
 
 Possible values of `ordType`: `MARKET`, `LIMIT`.
 
@@ -1313,12 +1329,12 @@ To start sending orders thrader should authenticate.
 
 Name | Value
 ---- | ----- 
-method | "auth"
-params | object with the following fields
-type | "token"
+method | should be "auth"
+params | request parameters
+type | should be "token"
 value | set your API key
 
-> Example of auth request:
+> An example of an `auth` request:
 
 ```javascript
 {
@@ -1339,7 +1355,7 @@ If provided token isn't valid trader will receive an error response.
 
 Trader needs to send again the `auth` message with the token every time he/she gets this error.
 
-> Example of the failed auth response:
+> An example of the failed auth response:
 
 ```javascript
 {
@@ -1360,7 +1376,7 @@ ch | "tradingStatus"
 data | payload object
 available | true or false
 
-> Example of a trader status message:
+> An example of a trader status message:
 
 ```javascript
 {
@@ -1377,7 +1393,7 @@ In case of maintenance, connection issues, etc. trader will receive this message
 
 This message indicates that trading is not available in that very moment.
 
-> Example of a trading status message if trading is not allowed:
+> An example of a trading status message if trading is not allowed:
 
 ```javascript
 {
@@ -1409,7 +1425,7 @@ In case of `MARKET` order field `px` could be omitted.
 
 `clOrdId` could be omitted. In this case it will be auto-generated by the server.
 
-> Example of a place order message:
+> An example of a `placeOrder` message:
 
 ```javascript
 {
@@ -1431,7 +1447,7 @@ In case of `MARKET` order field `px` could be omitted.
 
 The order can be either accepted or rejected by the exchange.
 
-> Example of the message in case order has been accepted:
+> An example of the `orderStatus` message if order has been accepted:
 
 ```javascript
 {
@@ -1480,6 +1496,7 @@ The value of `clOrdId` can be used to cancel this order in the future (in case o
 `positionMargin` is the total amount of funds locked in the position (contracts, active orders). 
 
 `upnl` is the unrealized PnL at this moment.
+
 `pnl` is the realized PnL, i.e. the change to the trader balance achieved as the result of all trading operations since the last funding. Explicit trader's transfers to/from trading account are not accounted into PnL.
 
 ## Private - Order fills
@@ -1539,7 +1556,7 @@ Trader can use the value of `contractId` to close specific contract in the futur
 <u>Note</u>: the value of `newClOrdId` is generated by the exchange (16 bytes). It's the ID of `FILLED` order and this order has the reference to the originally placed order via `origClOrdId`.
 
 
-> Example of the order fill message:
+> An example of the `orderFilled` message:
 
 ```javascript
 {
@@ -1626,7 +1643,7 @@ params | object | request's parameters
 symbol | string | contract's symbol
 clOrdId | string | client-provided or assigned by the API
 
-> Example of single order cancellation:
+> An example of single order cancellation:
 
 ```javascript
 {
@@ -1643,7 +1660,7 @@ More than one order can be cancelled as well.
 
 Trader can cancel all the orders (`side` and `px` are omitted) or just orders with the specified `side`  and/or `px`.
 
-> Example of multiple order cancellation:
+> An example of multiple order cancellation:
 
 ```javascript
 {
@@ -1661,7 +1678,7 @@ Trader can cancel all the orders (`side` and `px` are omitted) or just orders wi
 
 The `orderCancelled` will be received as a result of order cancellation.
 
-<u>Note</u>: `CENCELLED` order ID (`clOrdId`) - differs from ID of placed order (`oldClOrdId`).
+<u>Note</u>: `CANCELLED` order ID (`clOrdId`) - differs from ID of a placed order (`oldClOrdId`).
 
 Another valid values for `orderStatus` are `TERMINATED` and `EXPIRED` which are used when orders are cancelled by the exchange.
 
@@ -1675,7 +1692,7 @@ Field `orders` contains all the orders that have been cancelled.
 
 <u>Note</u>: the value of `clOrdId` is generated by the exchange (16 bytes).
 
-> Example of order cancellation response:
+> An example of `orderCancelled` message:
 
 ```javascript
 {
@@ -1737,7 +1754,7 @@ Trader can schedule order placement if particular condition would be met. The va
 Name | Type | Description
 ---- | ---- | -----------
 id | integer | request's ID
-method | string | should be "cancelOrder"
+method | string | should be "placeCondOrder"
 params | object | request's parameters
 symbol | string | contract's symbol
 actionId | string | conditional action's ID; optional
@@ -1752,7 +1769,7 @@ px | float | order's price; optional
 qty | float | order's quantity
 mayIncrPosition | bool | if order is allowed to increase trader's position
 
-`actionId` can be set by the trader or will be generated by the exchange. This value can be used later to cancel order placement.
+`actionId` can be set by the trader or will be generated by the exchange. This value can be used later to cancel conditional order placement.
 
 `pxType` can be either `SPOT_PRICE` or `LAST_PRICE`.
 
@@ -1766,7 +1783,7 @@ mayIncrPosition | bool | if order is allowed to increase trader's position
 
 When the condition is triggered a new order with the parameters `symbol`, `clOrdId`, `ordType`, `timeInForce`, `side`, `px`, `qty` will be placed. 
 
-> Example of conditional order placement:
+> An example of a `placeCondOrder` request:
 
 ```javascript
 {
@@ -1795,7 +1812,7 @@ If a conditional order was created successfully the exchange will send the `cond
 
 In case of an error the value of `status` will be set to `REJECTED` and `errCode` will provide the appropriate error code.
 
-> Example of a response to conditional order placement:
+> An example of a `condOrderStatus` message:
 
 ```javascript
 {
@@ -1823,11 +1840,11 @@ In case of an error the value of `status` will be set to `REJECTED` and `errCode
 }
 ```
 
-When conditional order is triggered the exchange will inform the trader with the `condOrderStatus` message and activate the order.
+When conditional order is triggered the exchange will inform the trader with the `condOrderStatus` message and activate the order. The value of field `status` will be set to `TRIGGERED`.
 
 <u>Note</u>: the value of `actionId` is generated by the exchange (16 bytes).
 
-> Example of a conditional order activation:
+> An example of a conditional order activation:
 
 ```javascript
 {
@@ -1873,7 +1890,7 @@ symbol | string | contract's symbol
 actionId | string | conditional action's ID; optional
 allForTrader | bool | if need to cancel all conditional orders
 
-> Example of a conditional order cancellation:
+> An example of a `cancelCondOrder` request:
 
 ```javascript
 {
@@ -1895,7 +1912,7 @@ The previous one will be assigned to a field `oldActionId`.
 
 In case of an error the value of `status` will be set to `REJECTED` and `errCode` will contain the appropriate error code.
 
-> Example of a conditional order cancellation:
+> An example of a response to conditional order cancellation:
 
 ```javascript
 {
@@ -1924,7 +1941,7 @@ In case of an error the value of `status` will be set to `REJECTED` and `errCode
 }
 ```
 
-## Private - Close position
+## Private - Close contract
 
 Trader can close a specific contract using its ID (`contractId`). 
 
@@ -1943,7 +1960,7 @@ ordType | string | order's type
 px | float | order's price; required for `LIMIT` order only
 qty | float | order's quantity; optional
 
-> Example of a close contract request:
+> An example of a `closeContract` request:
 
 ```javascript
 {
@@ -1965,7 +1982,7 @@ qty | float | order's quantity; optional
 
 If an error occurs (e.g. unknown `contractId`) an array `orderIds` will be empty and `errCode` will be set to appropriate value.
 
-> Example of a `contractClosed` response:
+> An example of a `contractClosed` message:
 
 ```javascript
 {
@@ -1978,11 +1995,12 @@ If an error occurs (e.g. unknown `contractId`) an array `orderIds` will be empty
     }
 } 
 ```
+
 <u>Note</u>: if the trader closes only a part of the contract the exchange will generate **new** ID for the remained part of the contract (this ID can be found in `orderFilled` message).
 
 Trader also will receive `orderStatus` and `orderFilled` messages related to these orders. The latter one will contain the information about affected contracts.
 
-> Example of `orderStatus` message followed by the `contractClosed`:
+> An example of `orderStatus` message followed by the `contractClosed`:
 
 ```javascript
 {
@@ -2013,7 +2031,7 @@ Trader also will receive `orderStatus` and `orderFilled` messages related to the
 }
 ```
 
-> Example of `orderFilled` message followed by the `contractClosed` and `orderStatus`:
+> An example of `orderFilled` message followed by the `contractClosed` and `orderStatus`:
 
 ```javascript
 {
@@ -2102,7 +2120,7 @@ Trader can specify `ordType` (`MARKET` or `LIMIT`) and `px` (if `ordType` is set
 
 A sequence of messages that will be received as a result is the same as in the case of closing a single contract (`contractClosed`, `orderStatus`, `orderFilled`).
 
-> Example of close position request:
+> An example of a `closePosition` request:
 
 ```javascript
 {
@@ -2118,18 +2136,18 @@ A sequence of messages that will be received as a result is the same as in the c
 
 ## Private - Trader status request
 
-Trader can request his/her status via the `getTraderStatus` request.
+Trader can request his/her status via the `getTraderStatus` message.
 
 **Request**
 
 Name | Type | Description
 ---- | ---- | -----------
 id | integer | request's ID
-method | string | should be "closePosition"
+method | string | should be "getTraderStatus"
 params | object | request's parameters
 symbol | string | contract's symbol
 
-> Example of a trader status request:
+> An example of a `getTraderStatus` request:
 
 ```javascript
 {
@@ -2145,7 +2163,7 @@ symbol | string | contract's symbol
 
 This message contains trader's balance, current position, active orders (can be cancelled using corresponding `clOrdId`), conditional orders (can be cancelled using corresponding `actionId`) and contracts (can be closed using corresponding `contractId`).
 
-> Example of a response to trader status request:
+> An example of a `traderStatus` message:
 
 ```javascript
 {
@@ -2236,9 +2254,9 @@ id | integer | request's ID
 method | string | should be "changeLeverageAll"
 params | object | request's parameters
 symbol | string | contract's symbol
-leverage | integer | leverage value
+leverage | integer | new leverage value
 
-> Example of change leverage request:
+> An example of a `changeLeverageAll` request:
 
 ```javascript
 {
@@ -2259,7 +2277,7 @@ This message contains trader's balance, current position, active orders (can be 
 
 In case of error (e.g. invalid new leverage value) the response will contain the appropriate `errCode` and `contracts`, `activeOrders` will be empty. Nothing will change.
 
-> Example of a response to change leverage request:
+> An example of a `leverage` message:
 
 ```javascript
 {
@@ -2332,7 +2350,7 @@ Trader will receive the `funding` message if he/she has open position during fun
 
 `payoutPerContract` is the value of the payout per contract during the funding.
 
-> Example of a funding message:
+> An example of a `funding` message:
 
 ```javascript
 {
@@ -2390,15 +2408,17 @@ Trader will receive the `funding` message if he/she has open position during fun
 
 ## Private - Position
 
-If trader's position has been liquidated and/or active orders have been terminated by the exchange the `position` message will be received.
+If trader's position has been liquidated and/or active orders have been terminated by the exchange the `position` message will be sent by the exchange.
 
 **Message**
 
-`liquidatedContracts` contains an array of liquidated contracts (the same structure as in `traderStatus` message). `oldContractId` represents the ID of liquidated contract.
+`liquidatedContracts` contains an array of liquidated contracts (the same structure as in `traderStatus` message). 
+
+`oldContractId` represents the ID of liquidated contract.
 
 `terminatedOrders` contains an array of `clOrdId`s of terminated orders.
 
->> Example of a position message:
+> An example of a `position` message:
 
 ```javascript
 {
@@ -2442,4 +2462,3 @@ If trader's position has been liquidated and/or active orders have been terminat
     }
 }
 ```
-
