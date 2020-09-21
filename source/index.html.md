@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Digitex Futures API Reference
 
 language_tabs:
   - javascript
@@ -11,6 +11,7 @@ toc_footers:
 
 includes:
   - errors
+  - changelog
 
 search: true
 
