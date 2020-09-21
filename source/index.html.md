@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - <a href='https://digitexfutures.com/'>Go to Digitex Futures</a>
+  - <a href='https://github.com/DigitexOfficial/api-docs'>Visit us on Github</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -22,7 +23,7 @@ Welcome to Digitex Futures API!
 
 You can use our API to get the market data and manage your orders on Digitex Futures Exchange.
 
-Visit https://github.com/DigitexOfficial/api-docs to leave your feedback. Code example is located in `examples` folder. 
+Visit <a href='https://github.com/DigitexOfficial/api-docs'></a> to leave your feedback. Code example is located in `examples` folder. 
 
 # REST API
 
