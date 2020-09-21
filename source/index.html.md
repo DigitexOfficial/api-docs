@@ -1139,6 +1139,7 @@ insuranceFund | float | insurance fund value
 
 - `TICK_SIZE`=5 and `TICK_VALUE`=0.1 for `BTCUSD-PERP` contract;
 - `TICK_SIZE`=0.25 and `TICK_VALUE`=0.25 for `ETHUSD-PERP` contract.
+- `TICK_SIZE`=1 and `TICK_VALUE`=0.1 for `XRPUSD-PERP` contract.
 
 > An example of `ticker` message:
 
@@ -1280,6 +1281,8 @@ Trader don't need to subscribe for trading messages. They will be sent by the se
 For `BTCUSD-PERP`: order price should be positive and a <u>multiple of 5</u>, order quantity should be positive and <u>integral</u>.
 
 For `ETHUSD-PERP`: order price should be positive and a <u>multiple of 0.25</u>, order quantity should be positive and <u>integral</u>.
+
+For `XRPUSD-PERP`: order price should be positive and a <u>multiple of 1</u>, order quantity should be positive and <u>integral</u>.
 
 All timestamps are provided in milliseconds.
 
