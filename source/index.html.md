@@ -22,6 +22,8 @@ Welcome to Digitex Futures API!
 
 You can use our API to get the market data and manage your orders on Digitex Futures Exchange.
 
+Visit https://github.com/DigitexOfficial/api-docs to leave your feedback. Code example is located in `examples` folder. 
+
 # REST API
 
 ## Overview
