@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Digitex Futures API Reference</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -447,6 +447,9 @@
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -4247,6 +4250,104 @@ A terminal contract is created when a contract is fully closed by matching an or
 <td>Invalid credentials.</td>
 </tr>
 </tbody></table>
+<h1 id='changelog'>Changelog</h1>
+<p><strong>21.09.2020</strong></p>
+
+<ul>
+<li>Add <code>XRPUSD-PERP</code> contract to MAINNET.</li>
+<li>Release v1.0.6 created.</li>
+</ul>
+
+<p><strong>07.09.2020</strong></p>
+
+<ul>
+<li>Added <code>ETHUSD-PERP</code> contract to MAINNET configuration.</li>
+<li>API v1.0.5 released.</li>
+</ul>
+
+<p><strong>28.08.2020</strong></p>
+
+<ul>
+<li>API v1.0.3 released.</li>
+</ul>
+
+<p><strong>26.08.2020</strong></p>
+
+<ul>
+<li>WS Trading API: rate limiter improved.</li>
+<li>WS Trading API: fix issue with <code>side</code> of <code>marketTrades</code> .</li>
+<li>WS Public API: introduce channel <code>&lt;CONTRACT&gt;@orderbook_1</code>. </li>
+<li>WS Public API: don&#39;t send cached messages from already subscribed channels after <code>subscribe</code>.</li>
+<li>WS Public API: subscription more than one time for the same channel doesn&#39;t produce an error.</li>
+<li>WS Public API: unsubscription from the channel without subscription for this channel doesn&#39;t produce an error.</li>
+</ul>
+
+<p><strong>19.08.2020</strong></p>
+
+<ul>
+<li>API v1.0.2 released.</li>
+</ul>
+
+<p><strong>18.08.2020</strong></p>
+
+<ul>
+<li>update examples of trading messages in the documentation.</li>
+</ul>
+
+<p><strong>14.08.2020</strong></p>
+
+<ul>
+<li>version 1.0.1 released.</li>
+</ul>
+
+<p><strong>10.08.2020</strong></p>
+
+<ul>
+<li>add <code>tickSize</code> and <code>tickValue</code> to <code>/public/contracts</code> response.</li>
+</ul>
+
+<p><strong>31.07.2020</strong></p>
+
+<ul>
+<li>public API: add <code>markPx</code> to <code>/public/markets</code> response.</li>
+</ul>
+
+<p><strong>28.07.2020</strong></p>
+
+<ul>
+<li>WS API: add trade request limiter (error <code>RequestRateLimitExceeded</code>).</li>
+</ul>
+
+<p><strong>26.07.2020</strong></p>
+
+<ul>
+<li>make <code>auth</code> pseudo-synchronous.</li>
+<li>add <code>AuthInProgress</code> error response.</li>
+</ul>
+
+<p><strong>24.07.2020</strong></p>
+
+<ul>
+<li>public WS API: rename channel <code>funding</code> to <code>fundingInfo</code>.</li>
+<li>change the way <code>volume24hUsd</code> is calculated.</li>
+<li>change the way <code>fundingRate</code> is calculated.</li>
+</ul>
+
+<p><strong>22.07.2020</strong></p>
+
+<ul>
+<li>Introduce simple version detection. To obtain version information make request to <code>/public/version</code> endpoint.</li>
+<li>Add <code>XRPUSD-PERP</code> contract.</li>
+</ul>
+
+<p><strong>21.07.2020</strong></p>
+
+<p>Add field <code>errCode</code> to API responses such as:
+- <code>orderStatus</code>
+- <code>orderCancelled</code>
+- <code>contractClosed</code>
+- <code>leverage</code>
+- <code>condOrderStatus</code></p>
 
       </div>
       <div class="dark-box">
