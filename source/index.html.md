@@ -1264,6 +1264,8 @@ In case of a general error the `error` message will be sent by the server.
 
 Private methods of the API allow to manage orders and position.
 
+To obtain an API key for your account, you need to be logged in exchange, then open Account and go to **API** tab. Then click "Create" to generate your private API key.
+
 **General**
 
 Possible values of order's `status`:  `PENDING`, `ACCEPTED`, `REJECTED`, `CANCELLED`, `FILLED`, `PARTIALLY_FILLED`, `TERMINATED`, `EXPIRED`, `TRIGGERED`.
