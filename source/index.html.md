@@ -18,7 +18,7 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Digitex Futures API!
+Welcome to Digitex Futures API!
 
 You can use our API to get the market data and manage your orders on Digitex Futures Exchange.
 
@@ -74,7 +74,7 @@ Use it to test if Digitex Futures API is reachable.
 
 `GET /api/v1/public/ping`
 
-**Paramaters**
+**Parameters**
 
 *This method takes no parameters*
 
@@ -96,7 +96,7 @@ Get the latest public announcements.
 
 `GET /api/v1/public/announcement`
 
-**Paramaters**
+**Parameters**
 
 *This method takes no parameters*
 
@@ -149,7 +149,7 @@ Get the current date and time.
 
 `GET /api/v1/public/time`
 
-**Paramaters**
+**Parameters**
 
 *This method takes no parameters*
 
@@ -180,7 +180,7 @@ Get the list of contracts traded on Difitex Futures Exchange.
 
 `GET /api/v1/public/contracts`
 
-**Paramaters**
+**Parameters**
 
 *This method takes no parameters*
 
@@ -330,7 +330,7 @@ tickValue | float | contract's tick value in base currency
 
 `GET /api/v1/public/assets`
 
-**Paramaters**
+**Parameters**
 
 *This method takes no parameters*
 
@@ -433,7 +433,7 @@ Get the current orderbook snapshot.
 
 `GET /api/v1/public/orderbook`
 
-**Paramaters**
+**Parameters**
 
 Name | Type | Description
 ---- | ---- | -----------
@@ -484,7 +484,7 @@ Get the overview of a current state of all available markets and 24-hour stats.
 
 `GET /api/v1/public/markets`
 
-**Paramaters**
+**Parameters**
 
 *This method takes no parameters*
 
@@ -586,7 +586,7 @@ Get the latest contract's trades.
 
 `GET /api/v1/public/trades`
 
-**Paramaters**
+**Parameters**
 
 Name | Type | Description
 ---- | ---- | -----------
@@ -630,7 +630,7 @@ Get the latest K-lines of the contract.
 
 `GET /api/v1/public/klines`
 
-**Paramaters**
+**Parameters**
 
 Name | Type | Description
 ---- | ---- | -----------
@@ -694,7 +694,7 @@ Get contract's index current value.
 
 `GET /api/v1/public/index`
 
-**Paramaters**
+**Parameters**
 
 Name | Type | Description
 ---- | ---- | -----------
@@ -731,7 +731,7 @@ vol | float | last trade volume
             "updated":1590999736783,
             "markPx":9549.44,
             "fairPx":9549.44,
-            "spotPx":0,
+            "spotPx":9549.44,
             "components":{
                 "binance":{
                     "weight":25,"ts":0,"px":0,"vol":0
@@ -759,7 +759,7 @@ Get latest liquidations of the contract.
 
 `GET /api/v1/public/liquidations`
 
-**Paramaters**
+**Parameters**
 
 Name | Type | Description
 ---- | ---- | -----------
