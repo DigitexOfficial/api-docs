@@ -279,7 +279,8 @@ tickValue | float | contract's tick value in base currency
             "minOrderSize":0,
             "maxOrderSize":0,
             "tickSize":5,
-            "tickValue":0.1
+            "tickValue":0.1,
+            "priceIncrement":1
         },
         {
             "id":2,
@@ -444,6 +445,18 @@ Name | Type | Description
 symbol | string | contract's symbol
 depth | integer | desired orderbook depth; default: 5, max: 200
 
+You can also specify the contract explicitly in the URL.
+
+**Request**
+
+`GET /api/v1/public/orderbook/BTCUSD-PERP`
+
+**Parameters**
+
+Name | Type | Description
+---- | ---- | -----------
+depth | integer | desired orderbook depth; default: 5, max: 200
+
 **Response**
 
 Name | Type | Description
@@ -582,6 +595,52 @@ insuranceFund | float | insurance fund value
 }
 ```
 
+You can also specify the contract explicitly and get market stats only for this particular contract.
+
+**Request**
+
+`GET /api/v1/public/markets/BTCUSD-PERP`
+
+**Parameters**
+
+*This method takes no parameters*
+
+> An example of a response from 'public/markets/BTCUSD-PERP':
+
+```javascript
+{
+    "status":"ok",
+    "ts":1601742178875,
+    "data":{
+        "name":"BTC/USD-PERP",
+        "symbol":"BTCUSD-PERP",
+        "openTime":1601655720000,
+        "closeTime":1601742120000,
+        "openPx":10538.95,
+        "highPx24h":10580,
+        "lowPx24h":10465,
+        "pxChange24h":0.15,
+        "volume24h":380497,
+        "volume24hUsd":2403883.72,
+        "fundingTime":1601769600000,
+        "fundingRate":0.01,
+        "bestBidPx":10545,
+        "bestBidQty":222,
+        "bestAskPx":10550,
+        "bestAskQty":7,
+        "lastTradePx":10555,
+        "lastTradeQty":4,
+        "lastTradeTs":1601742118683,
+        "contractValue":211.1,
+        "openInterest":336913,
+        "openInterestUsd":2132319.42,
+        "dgtxUsdRate":0.02998101,
+        "insuranceFund":1738156982.15,
+        "markPx":10551.4729
+    }
+}
+```
+
 ## Public - Trades
 
 Get the latest contract's trades.
@@ -595,6 +654,18 @@ Get the latest contract's trades.
 Name | Type | Description
 ---- | ---- | -----------
 symbol | string | contract's symbol
+count | integer | desired number of trades; default: 100, max: 200
+
+You can also specify the contract explicitly in the URL.
+
+**Request**
+
+`GET /api/v1/public/trades/BTCUSD-PERP`
+
+**Parameters**
+
+Name | Type | Description
+---- | ---- | -----------
 count | integer | desired number of trades; default: 100, max: 200
 
 **Response**
@@ -645,6 +716,21 @@ from | integer | start timestamp of the interval
 to | integer | end timestamp of the interval
 
 *Note*: currently only interval `1min` is supported. Fields `from` and `to` are not supported yet.
+
+You can also specify the contract explicitly in the URL.
+
+**Request**
+
+`GET /api/v1/public/klines/BTCUSD-PERP`
+
+**Parameters**
+
+Name | Type | Description
+---- | ---- | -----------
+count | integer | desired number of klines; default: 60, max: 1500
+interval | string | kline's interval; default: 1min;
+from | integer | start timestamp of the interval
+to | integer | end timestamp of the interval
 
 **Response**
 
@@ -705,6 +791,16 @@ Name | Type | Description
 symbol | string | symbol of the index
 
 *Note*: if `symbol` is not specified the list of all indices will be returned.
+
+You can also specify the index explicitly in the URL.
+
+**Request**
+
+`GET /api/v1/public/index/.DGTXBTCUSD`
+
+**Parameters**
+
+*This method takes no parameters*
 
 **Response**
 
@@ -768,6 +864,16 @@ Get latest liquidations of the contract.
 Name | Type | Description
 ---- | ---- | -----------
 symbol | string | contract's symbol
+
+You can also specify the contract explicitly in the URL.
+
+**Request**
+
+`GET /api/v1/public/liquidations/BTCUSD-PERP`
+
+**Parameters**
+
+*This method takes no parameters*
 
 **Response**
 
@@ -1285,6 +1391,8 @@ Possible values of `ch` (channel name): `error`, `orderStatus`, `orderFilled`, `
 Trader don't need to subscribe for trading messages. They will be sent by the server after successfull authentication. 
 
 For `BTCUSD-PERP`: order price should be positive and a <u>multiple of 5</u>, order quantity should be positive and <u>integral</u>.
+
+For `BTCUSD1-PERP`: order price should be positive and a <u>multiple of 1</u>, order quantity should be positive and <u>integral</u>.
 
 For `ETHUSD-PERP`: order price should be positive and a <u>multiple of 0.25</u>, order quantity should be positive and <u>integral</u>.
 

@@ -1,5 +1,10 @@
 # Changelog
 
+**02.10.2020**
+
+* Release 1.0.9 created.
+* Add new public endpoints for markets, orderbooks, trades, klines, liquidations and indices - specify contract as a part of the URL instead of a query parameter.
+
 **30.09.2020**
 
 * Add `BTCUSD1-PERP` contract to mainnet.
