@@ -934,7 +934,8 @@
             <span class="dl">"</span><span class="s2">minOrderSize</span><span class="dl">"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
             <span class="dl">"</span><span class="s2">maxOrderSize</span><span class="dl">"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
             <span class="dl">"</span><span class="s2">tickSize</span><span class="dl">"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
-            <span class="dl">"</span><span class="s2">tickValue</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.1</span>
+            <span class="dl">"</span><span class="s2">tickValue</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">priceIncrement</span><span class="dl">"</span><span class="p">:</span><span class="mi">1</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
@@ -1146,6 +1147,28 @@
 <td>string</td>
 <td>contract&#39;s symbol</td>
 </tr>
+<tr>
+<td>depth</td>
+<td>integer</td>
+<td>desired orderbook depth; default: 5, max: 200</td>
+</tr>
+</tbody></table>
+
+<p>You can also specify the contract explicitly in the URL.</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>GET /api/v1/public/orderbook/BTCUSD-PERP</code></p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>depth</td>
 <td>integer</td>
@@ -1406,6 +1429,51 @@
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
+</code></pre></div>
+<p>You can also specify the contract explicitly and get market stats only for this particular contract.</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>GET /api/v1/public/markets/BTCUSD-PERP</code></p>
+
+<p><strong>Parameters</strong></p>
+
+<p><em>This method takes no parameters</em></p>
+
+<blockquote>
+<p>An example of a response from &#39;public/markets/BTCUSD-PERP&#39;:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+    <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">ok</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">ts</span><span class="dl">"</span><span class="p">:</span><span class="mi">1601742178875</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:{</span>
+        <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">BTC/USD-PERP</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">symbol</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">BTCUSD-PERP</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">openTime</span><span class="dl">"</span><span class="p">:</span><span class="mi">1601655720000</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">closeTime</span><span class="dl">"</span><span class="p">:</span><span class="mi">1601742120000</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">openPx</span><span class="dl">"</span><span class="p">:</span><span class="mf">10538.95</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">highPx24h</span><span class="dl">"</span><span class="p">:</span><span class="mi">10580</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">lowPx24h</span><span class="dl">"</span><span class="p">:</span><span class="mi">10465</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">pxChange24h</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.15</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">volume24h</span><span class="dl">"</span><span class="p">:</span><span class="mi">380497</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">volume24hUsd</span><span class="dl">"</span><span class="p">:</span><span class="mf">2403883.72</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">fundingTime</span><span class="dl">"</span><span class="p">:</span><span class="mi">1601769600000</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">fundingRate</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">bestBidPx</span><span class="dl">"</span><span class="p">:</span><span class="mi">10545</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">bestBidQty</span><span class="dl">"</span><span class="p">:</span><span class="mi">222</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">bestAskPx</span><span class="dl">"</span><span class="p">:</span><span class="mi">10550</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">bestAskQty</span><span class="dl">"</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">lastTradePx</span><span class="dl">"</span><span class="p">:</span><span class="mi">10555</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">lastTradeQty</span><span class="dl">"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">lastTradeTs</span><span class="dl">"</span><span class="p">:</span><span class="mi">1601742118683</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">contractValue</span><span class="dl">"</span><span class="p">:</span><span class="mf">211.1</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">openInterest</span><span class="dl">"</span><span class="p">:</span><span class="mi">336913</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">openInterestUsd</span><span class="dl">"</span><span class="p">:</span><span class="mf">2132319.42</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">dgtxUsdRate</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.02998101</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">insuranceFund</span><span class="dl">"</span><span class="p">:</span><span class="mf">1738156982.15</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">markPx</span><span class="dl">"</span><span class="p">:</span><span class="mf">10551.4729</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div><h2 id='public-trades'>Public - Trades</h2>
 <p>Get the latest contract&#39;s trades.</p>
 
@@ -1427,6 +1495,28 @@
 <td>string</td>
 <td>contract&#39;s symbol</td>
 </tr>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>desired number of trades; default: 100, max: 200</td>
+</tr>
+</tbody></table>
+
+<p>You can also specify the contract explicitly in the URL.</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>GET /api/v1/public/trades/BTCUSD-PERP</code></p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>count</td>
 <td>integer</td>
@@ -1532,6 +1622,43 @@
 
 <p><em>Note</em>: currently only interval <code>1min</code> is supported. Fields <code>from</code> and <code>to</code> are not supported yet.</p>
 
+<p>You can also specify the contract explicitly in the URL.</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>GET /api/v1/public/klines/BTCUSD-PERP</code></p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>desired number of klines; default: 60, max: 1500</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>string</td>
+<td>kline&#39;s interval; default: 1min;</td>
+</tr>
+<tr>
+<td>from</td>
+<td>integer</td>
+<td>start timestamp of the interval</td>
+</tr>
+<tr>
+<td>to</td>
+<td>integer</td>
+<td>end timestamp of the interval</td>
+</tr>
+</tbody></table>
+
 <p><strong>Response</strong></p>
 
 <table><thead>
@@ -1636,6 +1763,16 @@
 </tbody></table>
 
 <p><em>Note</em>: if <code>symbol</code> is not specified the list of all indices will be returned.</p>
+
+<p>You can also specify the index explicitly in the URL.</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>GET /api/v1/public/index/.DGTXBTCUSD</code></p>
+
+<p><strong>Parameters</strong></p>
+
+<p><em>This method takes no parameters</em></p>
 
 <p><strong>Response</strong></p>
 
@@ -1756,6 +1893,16 @@
 <td>contract&#39;s symbol</td>
 </tr>
 </tbody></table>
+
+<p>You can also specify the contract explicitly in the URL.</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>GET /api/v1/public/liquidations/BTCUSD-PERP</code></p>
+
+<p><strong>Parameters</strong></p>
+
+<p><em>This method takes no parameters</em></p>
 
 <p><strong>Response</strong></p>
 
@@ -2632,6 +2779,8 @@
 <p>Trader don&#39;t need to subscribe for trading messages. They will be sent by the server after successfull authentication. </p>
 
 <p>For <code>BTCUSD-PERP</code>: order price should be positive and a <u>multiple of 5</u>, order quantity should be positive and <u>integral</u>.</p>
+
+<p>For <code>BTCUSD1-PERP</code>: order price should be positive and a <u>multiple of 1</u>, order quantity should be positive and <u>integral</u>.</p>
 
 <p>For <code>ETHUSD-PERP</code>: order price should be positive and a <u>multiple of 0.25</u>, order quantity should be positive and <u>integral</u>.</p>
 
@@ -4251,6 +4400,13 @@ A terminal contract is created when a contract is fully closed by matching an or
 </tr>
 </tbody></table>
 <h1 id='changelog'>Changelog</h1>
+<p><strong>02.10.2020</strong></p>
+
+<ul>
+<li>Release 1.0.9 created.</li>
+<li>Add new public endpoints for markets, orderbooks, trades, klines, liquidations and indices - specify contract as a part of the URL instead of a query parameter.</li>
+</ul>
+
 <p><strong>30.09.2020</strong></p>
 
 <ul>
