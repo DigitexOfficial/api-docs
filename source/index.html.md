@@ -509,6 +509,7 @@ Get the overview of a current state of all available markets and 24-hour stats.
 
 Name | Type | Description
 ---- | ---- | -----------
+name | string | contract's name
 symbol | string | contract's symbol
 openTime | integer | start timestamp of a 24h-interval
 closeTime | integer | end timestamp of the interval
@@ -541,6 +542,7 @@ insuranceFund | float | insurance fund value
     "ts":1590993332256,
     "data":[
         {
+            "name":"BTC/USD-PERP",
             "symbol":"BTCUSD-PERP",
             "openTime":1590906900000,
             "closeTime":1590993300000,
@@ -566,6 +568,7 @@ insuranceFund | float | insurance fund value
             "insuranceFund":1711653380.28
         },
         {
+            "name":"ETH/USD-PERP",
             "symbol":"ETHUSD-PERP",
             "openTime":1599558120000,
             "closeTime":1599644520000,
